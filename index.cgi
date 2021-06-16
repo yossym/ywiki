@@ -16,10 +16,10 @@ use POSIX 'strftime';
 use Walrus::YukiWikiDB;
 use CGI;
 #Markdown 'markdown';
-#use Text::Markdown 'markdown';
+use Text::Markdown 'markdown';
 #use Markdown::TOC;
 
-use Text::MultiMarkdown 'markdown';
+# use Text::MultiMarkdown 'markdown';
 #require 'Text/Markdown.pl';
 use Cwd;
 use Archive::Zip qw( :ERROR_CODES );
@@ -686,20 +686,10 @@ sub do_write
     if ($form{mymsg})
     {
 
-        # # passswd is hit.
-        # if ($challenge_pswd eq $passwd)
-        # {
-
-            logf("do_write()", "passwd hit");
-            $database{$mypage} = $form{mymsg};
-            print_header($mypage, 1);
-            print_content($database{$mypage});
-        # }
-        # else
-        # {
-        #     print_header($mypage, 1);
-        #     print qq(please input password.);
-        # }
+        logf("do_write()", "passwd hit");
+        $database{$mypage} = $form{mymsg};
+        print_header($mypage, 1);
+        print_content($database{$mypage});
     }
     else
     {
